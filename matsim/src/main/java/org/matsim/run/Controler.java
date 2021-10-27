@@ -19,7 +19,15 @@
 package org.matsim.run;
 
 import org.matsim.api.core.v01.Scenario;
+import org.matsim.contrib.ier.run.IERConfigGroup;
+import org.matsim.contrib.newgreedo.GreedoConfigGroup;
+import org.matsim.core.config.Config;
+import org.matsim.core.config.ConfigUtils;
 import org.matsim.core.controler.OutputDirectoryHierarchy;
+
+import ch.sbb.matsim.config.SBBTransitConfigGroup;
+import modalsharecalibrator.ModalShareCalibrationConfigGroup;
+import models.utils.StockholmConfigGroup;
 
 
 /**
@@ -56,5 +64,11 @@ public class Controler {
 	
 	public  static void main(String[] args) {
 		new Controler(args).run();
+		final Config config = ConfigUtils.loadConfig("\\home\\martin\\Desktop\\ptSimulation\\config_Vienna_v3.xml",
+                new SBBTransitConfigGroup(), 
+                new ModalShareCalibrationConfigGroup(),
+                new IERConfigGroup(),
+                new GreedoConfigGroup(),
+                new StockholmConfigGroup());
 	}
 }
